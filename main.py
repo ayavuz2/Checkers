@@ -1,16 +1,17 @@
 import pygame
 from checkers.constants import WIDTH, HEIGHT
-
+from checkers.board import Board
 
 FPS = 60
 
-WIN = pygame.display.set_mode(WIDTH, HEIGHT)
-pygame.displays.set_caption('Checkers')
+WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption('Checkers')
 
 
 def main():
 	run = True
-	clock = pygame.time.Clock
+	clock = pygame.time.Clock()
+	board = Board()
 
 	while run:
 		clock.tick(FPS)
@@ -21,6 +22,9 @@ def main():
 
 			if event.type == pygame.MOUSEBUTTONDOWN:
 				pass
+
+		board.draw_squares(WIN)
+		pygame.display.update()
 
 	pygame.quit()
 
